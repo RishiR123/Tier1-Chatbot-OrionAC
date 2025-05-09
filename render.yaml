@@ -2,6 +2,10 @@ services:
   - type: web
     name: my-chatbot-backend
     env: python
-    buildCommand: ""
-    startCommand: gunicorn app:app
     plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    autoDeploy: true
+    envVars:
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        sync: false  # set actual value in Render Dashboard
