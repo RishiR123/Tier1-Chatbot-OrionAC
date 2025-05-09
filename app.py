@@ -7,7 +7,7 @@ from langchain_community.vectorstores import Chroma
 import google.generativeai as gemini
 
 # Load API key from Render environment variable
-api = os.environ.get("google")
+api = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
 gemini.configure(api_key=api)
 
 # Load model
