@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask import render_template
 from dotenv import load_dotenv
 import os
 from langchain_community.document_loaders.pdf import PyPDFLoader
@@ -34,7 +35,7 @@ vectordb = Chroma.from_texts(texts=text_data, embedding=embeddings, persist_dire
 # Root route
 @app.route('/')
 def home():
-    return 'Flask app is running! Welcome to the chat API!'
+    return render_template('index.html')
 
 # Chat endpoint
 @app.route("/chat", methods=["POST"])
