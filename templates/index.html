@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAG Chatbot</title>
+</head>
+<body>
+    <h2>Ask Me Anything!</h2>
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Type a question..." />
+    <button onclick="sendQuery()">Send</button>
+
+    <script>
+        async function sendQuery() {
+            const input = document.getElementById("user-input").value;
+            const chatBox = document.getElementById("chat-box");
+
+            chatBox.innerHTML += `<p><b>You:</b> ${input}</p>`;
+
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: input })
+            });
+
+            const data = await response.json();
+            chatBox.innerHTML += `<p><b>Bot:</b> ${data.response}</p>`;
+            document.getElementById("user-input").value = "";
+        }
+    </script>
+</body>
+</html>
