@@ -9,7 +9,7 @@ import google.generativeai as gemini
 
 # Load API key from Render environment variable
 
-gemini.configure(api_key="AIzaSyAZaxy4HUOOmyzRV9Jl20Co6Ixl6lOnGqw")
+gemini.configure(api_key="google")
 
 # Load model
 model = gemini.GenerativeModel("gemini-1.5-flash")
@@ -24,7 +24,7 @@ docs = loader.load()
 # Embeddings
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",
-    google_api_key="AIzaSyAZaxy4HUOOmyzRV9Jl20Co6Ixl6lOnGqw",
+    google_api_key="",
     task_type="retrieval_query"
 )
 
