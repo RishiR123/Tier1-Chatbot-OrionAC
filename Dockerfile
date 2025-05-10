@@ -5,16 +5,13 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy requirements
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the code
+# Copy the app
 COPY . .
 
-# Expose the port Cloud Run will use
-EXPOSE 8080
-
-# Run the application
-CMD ["python", "main.py"]
+# Run the app
+CMD ["python", "app.py"]
