@@ -8,8 +8,8 @@ from langchain_community.vectorstores import Chroma
 import google.generativeai as gemini
 
 # Load API key from Render environment variable
-api = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-gemini.configure(api_key=api)
+
+gemini.configure(api_key="AIzaSyAZaxy4HUOOmyzRV9Jl20Co6Ixl6lOnGqw")
 
 # Load model
 model = gemini.GenerativeModel("gemini-1.5-flash")
@@ -24,7 +24,7 @@ docs = loader.load()
 # Embeddings
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",
-    google_api_key=api,
+    google_api_key="AIzaSyAZaxy4HUOOmyzRV9Jl20Co6Ixl6lOnGqw",
     task_type="retrieval_query"
 )
 
@@ -50,6 +50,6 @@ def chat():
 
     return jsonify({"response": answer})
 
+# Run locally (ignored by Render)
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
-
+    app.run(host="0.0.0.0", port=8080)
